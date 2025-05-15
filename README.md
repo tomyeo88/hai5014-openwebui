@@ -95,7 +95,39 @@ There are two options to run this locally:
     dotenv run open-webui serve
     ```
 
-7. Open the web browser and go to [`http://localhost:8000`](http://localhost:8000)
+7. Open the web browser and go to [`http://localhost:8080`](http://localhost:8080)
 8. Walk through the Open WebUI *get started* wizard and create an admin account. Make sure to remember your password :)
 
 ### Option 2: Docker
+
+See the [Open WebUI documentation]()
+
+
+## Troubleshooting
+
+### Stop the server
+
+If you want to stop the server, open the terminal and press `CTRL + C`. This will stop the server and close the web browser.
+
+You can then run the server again with the command `dotenv run open-webui serve`.
+
+### Resetting the database
+
+If you want to reset the database, you can run the following SQL command in Supabase SQL editor:
+
+```sql
+DO $$
+DECLARE
+    rec RECORD;
+BEGIN
+    FOR rec IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
+        EXECUTE 'DROP TABLE IF EXISTS "' || rec.tablename || '" CASCADE;';
+    END LOOP;
+END $$;
+```
+
+### Warning
+
+⚠️ **CAUTION**: The SQL command above will delete ALL tables in your database. Only use this if you want to completely reset your OpenWebUI installation. Make sure you have backups of any important data before running this command.
+
+Remember that API keys should be kept secure and never committed to version control. Using services like Google Gemini API and Supabase may incur costs depending on your usage.
