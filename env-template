@@ -1,5 +1,5 @@
 # Environment variables template for openwebui session of class HAI5014 (Pim Kamphuis)
-# Make sure there ar no spaces around the equal sign and rename tshis file to .env
+# Make sure there ar no spaces around the equal sign and rename this file to .env
 
 # Application database
 VECTOR_DB=pgvector
@@ -8,7 +8,6 @@ VECTOR_DB=pgvector
 ENABLE_OLLAMA_API=false
 
 OPENAI_API_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai
-
 
 DEFAULT_MODELS=gemini-2.5-flash-preview-04-17
 
