@@ -13,13 +13,16 @@
 
     // Configure the Codespaces Machine to use 2 CPUs
     "hostRequirements": {
-        "cpus": 4
+        "cpus": 2
     },
 
     // Use 'postCreateCommand' to run commands after the container is created.
     // "postCreateCommand": "pip3 install --user -r requirements.txt",
     "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH=$HOME/.local/bin:$PATH && uv pip install --system -r requirements.txt",
 
+    // Use runArgs to load environment variables from .env file
+    "runArgs": ["--env-file", "${localWorkspaceFolder}/.env"],
+    
     // Install preferred extensions into VS Code
     "customizations": {
         "vscode": {
